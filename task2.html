@@ -1,0 +1,53 @@
+<!-- A text box with a nearby Add button. Giving only URL in text box. 
+By clicking Add button the URL image should appear below -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image URL</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 10px;
+    
+        }
+    </style>
+</head>
+<body>
+    <label>Image URL: </label>
+    <input id="input" type="text" placeholder="Enter image URL here">
+    <button onclick="show_img()">Add</button>
+
+    <div id="gallery"></div> 
+
+    <script>
+        function show_img() {
+            // get the input value
+            let inp = document.getElementById("input").value.trim();
+
+            if (inp === "") {
+                alert("Please enter an image URL!");
+                return;
+            }
+
+            // log the input
+            console.log("Input is:", inp);
+
+            // create a new image element
+            let img = document.createElement("img");
+            img.src = inp; // set the image source to the URL
+            img.alt = "User added image";
+
+            // add the image to the page
+            document.getElementById("gallery").appendChild(img);
+
+            // clear input box
+            document.getElementById("input").value = "";
+        }
+    </script>
+</body>
+</html>
